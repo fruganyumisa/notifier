@@ -49,7 +49,7 @@ The **Notifier** is a Go-based application that periodically checks the connecti
 
 The service can be configured using either a **Environment File** or **os environment variables**.
 
-### YAML Configuration
+### Env File Configuration
 
 Create a `config.env` file in the root directory:
 
