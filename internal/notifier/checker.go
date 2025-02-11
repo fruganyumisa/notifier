@@ -12,9 +12,10 @@ func CheckService(url string) bool {
 		Timeout: 10 * time.Second,
 	}
 	resp, err := client.Get(url)
-	if err != nil || !(resp.StatusCode == http.StatusOK) || resp.StatusCode != http.StatusNotFound {
-		log.Printf("Response received from service: %v", resp)
-		return false
+	if err == nil && resp.StatusCode >= 200 && resp.StatusCode <= 599 {
+
+		return true
 	}
-	return true
+	log.Printf("Response received from service: %v", err)
+	return false
 }
