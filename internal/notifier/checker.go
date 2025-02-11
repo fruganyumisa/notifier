@@ -1,6 +1,7 @@
 package notifier
 
 import (
+	"log"
 	"net/http"
 	"time"
 )
@@ -12,6 +13,7 @@ func CheckService(url string) bool {
 	}
 	resp, err := client.Get(url)
 	if err != nil || resp.StatusCode != http.StatusOK {
+		log.Printf("Response received from service: %v", resp)
 		return false
 	}
 	return true
