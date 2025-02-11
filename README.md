@@ -190,6 +190,7 @@ For questions or issues, please open an issue on the [GitHub repository](https:/
 
 - Built with ❤️ using Go.
 - Inspired by the need for reliable service monitoring and alerting.
+- Appreciating code review and technical support from _Sr. Go Eng_  [Bethuel Mmbaga](https://github.com/bcmmbaga)
 
 ---
 
