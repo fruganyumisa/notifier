@@ -16,6 +16,7 @@ func CheckService(url string) bool {
 
 		return true
 	}
-	log.Printf("Response received from service: %v", err)
+	log.Printf("Service Down Error Response received from service: %v", err)
+
 	return false
 }
