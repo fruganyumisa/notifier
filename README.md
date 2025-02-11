@@ -54,9 +54,11 @@ The service can be configured using either a **Environment File** or **os enviro
 Create a `config.env` file in the root directory:
 
 ```bash
-SERVICES="host1:8080,host2:22"
+SERVICES="http://host1:8080,http://host2:22"
 CHECK_INTERVAL="5m"
 SMS_GATEWAY_URL="http://sms-gateway.com/send
+NOTIFIER_ADMIN_PHONES="+1234567890,+0987654321"
+NOTIFIER_SENDER_HEADER="ALERTS"
 ```
 
 ### Environment Variables
@@ -64,10 +66,11 @@ SMS_GATEWAY_URL="http://sms-gateway.com/send
 Alternatively, you can configure the service using environment variables:
 
 ```bash
-export NOTIFIER_SERVICES="host1:8080,host2:22"
+export NOTIFIER_SERVICES="http://host1:8080,http://host2:22"
 export NOTIFIER_CHECK_INTERVAL="5m"
 export NOTIFIER_SMS_GATEWAY_URL="http://sms-gateway.com/api/send"
 export NOTIFIER_ADMIN_PHONES="+1234567890,+0987654321"
+export NOTIFIER_SENDER_HEADER="ALERTS"
 ```
 
 ---

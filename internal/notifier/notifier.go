@@ -56,7 +56,7 @@ func (n *Notifier) CheckServices() {
 
 	if len(downServices) > 0 {
 		message := "Hello Admin, \nCritical services detected to be down details of Services down: \n" + joinStrings(downServices, ", \n")
-		err := SendSMS(n.config.SMSGatewayURL, n.config.AdminPhones, message)
+		err := SendSMS(n.config.SMSGatewayURL, n.config.AdminPhones, message, n.config.SenderHeader)
 		if err != nil {
 			n.logger.Fatal().Str("Event", "Send SMS notification failed ").Msg(err.Error())
 

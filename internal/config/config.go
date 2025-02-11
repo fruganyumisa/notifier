@@ -11,4 +11,5 @@ type Config struct {
 	SMSGatewayURL string        `required:"true" split_words:"true"`
 	AdminPhones   []string      `required:"true" split_words:"true"`
 	Logger        zerolog.Logger
+	SenderHeader  string `required:"true" split_words:"true"`
 }

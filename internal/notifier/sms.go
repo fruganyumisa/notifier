@@ -9,7 +9,7 @@ import (
 )
 
 // SendSMS sends an SMS notification to multiple admins via the SMS gateway.
-func SendSMS(gatewayURL string, phones []string, message string) error {
+func SendSMS(gatewayURL string, phones []string, message string, senderHeader string) error {
 	var wg sync.WaitGroup
 	var err error
 
@@ -22,7 +22,7 @@ func SendSMS(gatewayURL string, phones []string, message string) error {
 			formData := url.Values{}
 			formData.Set("dst", phone)    // Add phone number
 			formData.Set("text", message) // Add message
-			formData.Set("src", "NESO ALERTS")
+			formData.Set("src", senderHeader)
 			formData.Set("register", "final")
 
 			// Create a new HTTP request
