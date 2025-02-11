@@ -4,6 +4,7 @@ import (
 	"github.com/rs/zerolog"
 	"log"
 	"notifier/internal/config"
+	"os"
 	"time"
 )
 
@@ -15,7 +16,7 @@ type Notifier struct {
 
 // NewNotifier creates a new Notifier instance.
 func NewNotifier(cfg *config.Config) *Notifier {
-	return &Notifier{config: cfg, logger: zerolog.Logger{}}
+	return &Notifier{config: cfg, logger: zerolog.New(os.Stdout).With().Timestamp().Logger()}
 }
 
 // Start begins the monitoring process.
@@ -33,8 +34,12 @@ func (n *Notifier) CheckServices() {
 	var downServices []string
 
 	for _, service := range n.config.Services {
+		n.logger.Info().Str("Event", "Service Monitoring, ").Str("Service", service)
+
 		if !CheckService(service) {
 			downServices = append(downServices, service)
+		} else {
+			n.logger.Info().Str("Event", "Service Monitoring").Str("Status", "Service is up")
 		}
 	}
 

@@ -1,6 +1,7 @@
 package notifier
 
 import (
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -19,8 +20,10 @@ func SendSMS(gatewayURL string, phones []string, message string) error {
 
 			// Create form data
 			formData := url.Values{}
-			formData.Set("phone", phone)     // Add phone number
-			formData.Set("message", message) // Add message
+			formData.Set("dst", phone)    // Add phone number
+			formData.Set("text", message) // Add message
+			formData.Set("src", "NESO ALERTS")
+			formData.Set("register", "final")
 
 			// Create a new HTTP request
 			req, reqErr := http.NewRequest("POST", gatewayURL, strings.NewReader(formData.Encode()))
@@ -39,7 +42,12 @@ func SendSMS(gatewayURL string, phones []string, message string) error {
 				err = httpErr
 				return
 			}
-			defer resp.Body.Close()
+			defer func(Body io.ReadCloser) {
+				err := Body.Close()
+				if err != nil {
+
+				}
+			}(resp.Body)
 
 			// Check the response status
 			if resp.StatusCode != http.StatusOK {
