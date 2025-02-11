@@ -9,8 +9,10 @@ The **Notifier** is a Go-based application that periodically checks the connecti
 - **Periodic Service Checks**: Monitors services at a configurable interval (e.g., every 5 minutes).
 - **SMS Notifications**: Sends SMS alerts to multiple administrators if a service is down.
 - **Graceful Shutdown**: Handles termination signals (e.g., `Ctrl+C`) gracefully.
-- **Configurable**: Supports configuration via environment variables or a YAML file.
-- **TCP Connectivity Checks**: Uses TCP (Telnet) to verify service availability.
+- **Configurable**: Supports configuration via environment variables or a customer env file.
+- **HTTP Connectivity Checks**: Uses http to verify service availability
+- **TCP Connectivity Checks**: Uses TCP (Telnet) to verify service availability. (WIP)
+
 
 ---
 
