@@ -62,10 +62,10 @@ SMS_GATEWAY_URL="http://sms-gateway.com/send
 Alternatively, you can configure the service using environment variables:
 
 ```bash
-export SERVICES="host1:8080,host2:22"
-export CHECK_INTERVAL="5m"
-export SMS_GATEWAY_URL="http://sms-gateway.com/api/send"
-export ADMIN_PHONES="+1234567890,+0987654321"
+export NOTIFIER_SERVICES="host1:8080,host2:22"
+export NOTIFIER_CHECK_INTERVAL="5m"
+export NOTIFIER_SMS_GATEWAY_URL="http://sms-gateway.com/api/send"
+export NOTIFIER_ADMIN_PHONES="+1234567890,+0987654321"
 ```
 
 ---
@@ -124,7 +124,7 @@ notifier/
 │   │   └── models.go        # Data models (e.g., SMSRequest)
 │   └── utils/
 │       └── utils.go         # Utility functions (e.g., joinStrings)
-├── config.yaml              # Configuration file (optional)
+├── config.env              # Configuration file (optional)
 ├── go.mod                   # Go module file
 ├── go.sum                   # Go dependencies checksum file
 └── README.md                # Project documentation
