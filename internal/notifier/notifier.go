@@ -2,6 +2,7 @@ package notifier
 
 import (
 	"context"
+	"fmt"
 	"github.com/rs/zerolog"
 	"log"
 	"notifier/internal/config"
@@ -77,4 +78,26 @@ func joinStrings(strings []string, delimiter string) string {
 		result += s
 	}
 	return result
+}
+
+// generateAlertMessage creates an SMS message for down services
+func generateAlertMessage(services []string) string {
+	timestamp := time.Now().UTC().Format("2006-01-02 15:04:05 UTC")
+	serviceList := joinStrings(services, ", ")
+	details := "Failed to establish HTTP connection. Connection timed out after 10 seconds."
+	action := "Please investigate immediately. Check server logs and restart if necessary."
+
+	return fmt.Sprintf(`
+ Service Alert 
+
+Service: %s
+Status: Down
+Time: %s
+
+Details:
+%s
+
+Action Required:
+%s
+`, serviceList, timestamp, details, action)
 }
